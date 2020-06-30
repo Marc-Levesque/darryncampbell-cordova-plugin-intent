@@ -449,6 +449,11 @@ public class IntentShim extends CordovaPlugin {
         this.cordova.getActivity().startService(intent);
     }
 
+    private void startForegroundService(Intent intent)
+    {
+        this.cordova.getActivity().startForegroundService(intent);
+    }
+
     private Intent populateIntent(JSONObject obj, CallbackContext callbackContext) throws JSONException
     {
         //  Credit: https://github.com/chrisekelley/cordova-webintent
