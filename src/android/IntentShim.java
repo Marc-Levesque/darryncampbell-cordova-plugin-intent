@@ -112,6 +112,18 @@ public class IntentShim extends CordovaPlugin {
             callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
             return true;
         }
+        else if (action.equals("startForegroundService"))
+                {
+                    if (args.length() != 1) {
+                        callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.INVALID_ACTION));
+                        return false;
+                    }
+                    JSONObject obj = args.getJSONObject(0);
+                    Intent intent = populateIntent(obj, callbackContext);
+                    startForegroundService(intent);
+                    callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
+                    return true;
+                }
         else if (action.equals("registerBroadcastReceiver")) {
             try
             {
